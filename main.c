@@ -1,4 +1,4 @@
-#include "minilibx_opengl_20191021/mlx.h"
+#include "fractol.h"
 
 // int main(void)
 // {
@@ -16,18 +16,24 @@
 //     free(mlx);
 //     return (0);
 // }
-typedef struct  s_complex
+
+//input mandelbrot
+//input julia <arg1> <arg2>
+int main(int argc, char **argv)
 {
-    double real;
-    double i;
-}   t_complex;
-
-
-int main()
-{
-    t_complex z;
-    t_complex c;
-
-    z.real = 0;
-    z.i = 0;
+    t_fractal fractal;
+    if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) 
+        || (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+    {
+        printf("START");//to check if it is correct, del later
+        fractal.name = argv[1];
+        fractal_init(&fractal);
+        fractal_render(&fractal);
+        mlx_loop(fractal.mlx_connection);
+    }
+    else
+    {
+        ft_putstr_fd(ERR_MSG, STDERR_FILENO);
+        exit(EXIT_FAILURE);
+    }
 }
