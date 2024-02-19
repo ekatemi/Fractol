@@ -27,9 +27,9 @@ int main(int argc, char **argv)
     {
         printf("START");//to check if it is correct, del later
         fractal.name = argv[1];
-        fractal_init(&fractal);
-        fractal_render(&fractal);
-        mlx_loop(fractal.mlx_connection);
+        fractal_init(&fractal); //inicia window y image
+        fractal_render(&fractal); //modifica image
+        mlx_loop(fractal.mlx_connection); //infinite loop to keep modifying
     }
     else
     {
