@@ -14,6 +14,17 @@
 #define WIDTH 800
 #define HEIGHT 800
 
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17,
+    ON_EXIT = 53 ///my var check it
+};
+
 //to get the memory address on which we will mutate the bytes accordingly 
 typedef struct s_img
 {
@@ -38,7 +49,11 @@ typedef struct s_fractal
 
 void fractal_init(t_fractal *fractal);
 
+//***  KEY HANDLERS  ***//
+//mlx_key_hook(data.win_ptr, &handle_keypress, &data);
+int handle_keypress(int keysym, t_fractal *data);
 
+//
 //*** string utils ***
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);

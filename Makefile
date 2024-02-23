@@ -14,7 +14,7 @@ OBJ_DIR = obj
 OBJ	=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 NAMELIB	=	fractol.a
 LINK 	=	-lmlx  -framework OpenGL -framework AppKit -L ./mlx -lm
-SRC		=	main.c string_utils.c
+SRC		=	main.c string_utils.c init.c
 COMP	=	$(CC) $(CFLAGS) $(LINK)
 RM		=	rm -f
 
