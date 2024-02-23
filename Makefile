@@ -12,28 +12,35 @@ CC	=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 OBJ_DIR = obj
 OBJ	=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
-NAMELIB	=	fractol.a
-LINK 	=	-lmlx  -framework OpenGL -framework AppKit -L ./mlx -lm
-SRC		=	main.c string_utils.c init.c
-COMP	=	$(CC) $(CFLAGS) $(LINK)
+INCLUDE = -L./mlx -lmlx
+HEADER = fractol.h
+LINK 	=	-framework OpenGL -framework AppKit -lm
+SRC		=	main.c string_utils.c init.c key_handlers.c
+COMP	=	$(CC) $(CFLAGS) $(LINK) $(INCLUDE)
 RM		=	rm -f
 
-all: $(NAME)
+all: $(NAME) mlx
+
+mlx:
+	@echo "Compiling mlx"
+	@$(MAKE) -C mlx
 
 $(NAME): $(OBJ)
 	$(COMP) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
+	@$(MAKE) -C mlx clean
 	$(RM) -r $(OBJ_DIR)
 
 fclean:	clean
-	$(RM) $(NAME)
+	@$(MAKE) -C mlx fclean
+	$(RM) $(NAME) $(MAKE)
 
 re: fclean all
 
