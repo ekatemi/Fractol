@@ -7,17 +7,17 @@
 
 #TODO   fix relink, if I change header it doesnt recompile
 
-NAME 	=	fractol
-CC	=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+NAME    = fractol
+CC      = gcc
+CFLAGS  = -Wall -Werror -Wextra
 OBJ_DIR = obj
-OBJ	=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
-INCLUDE = -L./mlx -lmlx
-HEADER = fractol.h
-LINK 	=	-framework OpenGL -framework AppKit -lm
-SRC		=	main.c string_utils.c init.c key_handlers.c
-COMP	=	$(CC) $(CFLAGS) $(LINK) $(INCLUDE)
-RM		=	rm -f
+OBJ     = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+HEADER  = fractol.h
+LINK    = -framework OpenGL -framework AppKit -lm
+LIBS    = -L./mlx -lmlx
+SRC     = main.c string_utils.c init.c key_handlers.c
+COMP    = $(CC) $(CFLAGS)
+RM      = rm -f
 
 all: $(NAME) mlx
 
@@ -26,10 +26,10 @@ mlx:
 	@$(MAKE) -C mlx
 
 $(NAME): $(OBJ)
-	$(COMP) $(OBJ) -o $(NAME)
+	$(COMP) $(OBJ) -o $(NAME) $(LINK) $(LIBS)
 
 $(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -38,9 +38,9 @@ clean:
 	@$(MAKE) -C mlx clean
 	$(RM) -r $(OBJ_DIR)
 
-fclean:	clean
+fclean: clean
 	@$(MAKE) -C mlx fclean
-	$(RM) $(NAME) $(MAKE)
+	$(RM) $(NAME)
 
 re: fclean all
 
