@@ -13,17 +13,17 @@ CFLAGS  = -Wall -Werror -Wextra
 OBJ_DIR = obj
 OBJ     = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 HEADER  = fractol.h
+MLX_PATH = ./mlx
 LINK    = -framework OpenGL -framework AppKit -lm
-LIBS    = -L./mlx -lmlx
+LIBS    = -Lmlx -lmlx
 SRC     = main.c string_utils.c init.c key_handlers.c
 COMP    = $(CC) $(CFLAGS) $(LIBS)
 RM      = rm -f
 
-all: $(NAME) mlx
+all: mlx $(NAME) 
 
 mlx:
-	@echo "Compiling mlx"
-	@$(MAKE) -C mlx
+	@$(MAKE) -sC $(MLX_PATH) &> /dev/null
 
 $(NAME): $(OBJ)
 	$(COMP) $(OBJ) -o $(NAME) $(LINK) $(LIBS)
@@ -35,13 +35,16 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	@$(MAKE) -C mlx clean
+	@$(MAKE) clean -C mlx
 	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) -C mlx fclean
+	@$(MAKE) clean -C mlx 
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all re clean fclean
+print:
+	@echo $(MAKE)
+
+.PHONY: all re fclean clean mlx
