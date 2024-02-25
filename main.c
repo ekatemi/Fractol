@@ -2,6 +2,31 @@
 
 
 
+void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->img.pixel_ptr + (y * data->img.line_len + x * (data->img.bpp / 8)); ///calculates offset
+	*(unsigned int*)dst = color;
+}
+
+void color_image(t_fractal *data, int color)
+{
+    int x;
+    int y;
+
+    x = 0;
+    while(x < WIDTH)
+    {
+        y = 0;
+        while(y < HEIGHT)
+            {
+                my_mlx_pixel_put(data, x, y, color);
+                y++;
+            }
+        x++;
+    }
+}
 
 
 //input mandelbrot
@@ -17,12 +42,13 @@ int main(int argc, char **argv)
         fractal_init(&fractal); //inicia window y image
         //fractal_render(&fractal); //modifica image
             /* Put a red pixel in the middle of the window */
-        int middle_x = WIDTH / 2;
-        int middle_y = HEIGHT / 2;
+        //int x = WIDTH / 2;
+        //int y = HEIGHT / 2;
         int color = 0x00FF0000;
-        mlx_pixel_put(fractal.mlx_connection, fractal.mlx_window, middle_x, middle_y, color);
+        color_image(&fractal, color);
+        //my_mlx_pixel_put(&fractal, middle_x, middle_y, color);
         /* Display the image in the window */
-        //mlx_put_image_to_window(fractal.mlx_connection, fractal.mlx_window, fractal.img.img_ptr, 0, 0);
+        mlx_put_image_to_window(fractal.mlx_connection, fractal.mlx_window, fractal.img.img_ptr, 0, 0);
         
         mlx_key_hook(fractal.mlx_window, &handle_keypress, &fractal);
     

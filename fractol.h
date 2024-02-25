@@ -47,13 +47,16 @@ typedef struct s_fractal
     //hooks
 }   t_fractal;
 
+//*** INIT FRACTAL STRUCT ***//
 void fractal_init(t_fractal *fractal);
 
 //***  KEY HANDLERS  ***//
-//mlx_key_hook(data.win_ptr, &handle_keypress, &data);
 int handle_keypress(int keysym, t_fractal *data);
 
-//
+//*** RENDER FRACTAL ***
+void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
+void color_image(t_fractal *data, int color); ///just test, delete later
+
 //*** string utils ***
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);
