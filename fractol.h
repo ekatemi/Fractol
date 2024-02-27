@@ -25,6 +25,14 @@ enum {
     ON_EXIT = 53 ///my var check it
 };
 
+//COMPLEX VALUES
+
+typedef struct s_complex
+{
+    double  x;
+    double  z;
+}   t_complex;
+
 //to get the memory address on which we will mutate the bytes accordingly 
 typedef struct s_img
 {
