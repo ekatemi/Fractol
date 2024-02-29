@@ -1,7 +1,10 @@
 #include "fractol.h"
 
-double scale_to_range(int input, int min_input, int max_input, double min_output, double max_output) 
+void set_minmax(t_fractal *fractal)
 {
-    return min_output + ((double)(input - min_input) / (max_input - min_input)) * (max_output - min_output);
+fractal->min_r = -2;
+fractal->max_r = fractal->min_r * -1 * WIDTH / HEIGHT;
+fractal->min_i = -2;
+fractal->max_i = fractal->min_i * -1 * HEIGHT / WIDTH;
 }
 
