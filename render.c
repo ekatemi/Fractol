@@ -46,7 +46,7 @@ void fractal_render(t_fractal *fractal)
         while(x < WIDTH)
             {
                 pr = fractal->max_r + ((double)(WIDTH - x) * (fractal->min_r - fractal->max_r) / WIDTH);
-                if (is_mandelbrot(pr, pi, fractal) == 0)
+                if (is_mandelbrot(pr, pi, fractal) == 1)
 				    my_mlx_pixel_put(fractal, x, y, RED);
 			    // else
 				//     my_px_put(f->img_data, x, y, create_trgb(0, 0, 0, 0));
