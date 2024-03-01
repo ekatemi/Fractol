@@ -14,7 +14,8 @@
 #define WIDTH 800
 #define HEIGHT 800
 #define MAX_ITERATIONS 1000
-#define RED 0x00FF0000 
+#define RED 0x00FF0000
+#define BLUE 0x000000FF
 
 enum {
 	ON_KEYDOWN = 2,

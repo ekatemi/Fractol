@@ -30,7 +30,13 @@ void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color)
 
 
 /// render fractal mandelbrot
-void fractal_render(t_fractal *fractal)
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void    fractal_render(t_fractal *fractal)
 {
     int x;
     int y;
@@ -38,21 +44,22 @@ void fractal_render(t_fractal *fractal)
     double pr; //x
     double pi; //y
 
-    y = 0;
-    while(y < HEIGHT)
+    x = 0;
+    while(x < WIDTH)
     {
-        pi = fractal->max_i + ((double)(HEIGHT - y) * (fractal->min_i - fractal->max_i) / HEIGHT);
-        x = 0;
-        while(x < WIDTH)
+        pr = fractal->max_r + ((double)(WIDTH - x) * (fractal->min_r - fractal->max_r) / WIDTH);
+        
+        y = 0;
+        while(y < HEIGHT)
             {
-                pr = fractal->max_r + ((double)(WIDTH - x) * (fractal->min_r - fractal->max_r) / WIDTH);
-                if (is_mandelbrot(pr, pi, fractal) == 1)
+                pi = fractal->max_i + ((double)(HEIGHT - y) * (fractal->min_i - fractal->max_i) / HEIGHT);
+                if (is_mandelbrot(pr, pi, fractal))
 				    my_mlx_pixel_put(fractal, x, y, RED);
-			    // else
-				//     my_px_put(f->img_data, x, y, create_trgb(0, 0, 0, 0));
-                x++;
+			    else
+				    my_mlx_pixel_put(fractal, x, y, BLUE);
+                y++;
             }
-        y++;
+        x++;
     }
     mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window, fractal->img.img_ptr, 0, 0);
 }
