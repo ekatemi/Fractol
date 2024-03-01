@@ -11,7 +11,7 @@
 
 #define ERR_MSG "Please enter \n\t\" ./fractol mandelbrot\" \n\t or \n\t\" ./fractol julia <val1> <val2>\"\n"
 
-#define WIDTH 800
+#define WIDTH 400
 #define HEIGHT 800
 #define MAX_ITERATIONS 1000
 #define RED 0x00FF0000

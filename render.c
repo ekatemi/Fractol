@@ -44,22 +44,21 @@ void    fractal_render(t_fractal *fractal)
     double pr; //x
     double pi; //y
 
-    x = 0;
-    while(x < WIDTH)
+    y = 0;
+    while(y < HEIGHT)
     {
-        pr = fractal->max_r + ((double)(WIDTH - x) * (fractal->min_r - fractal->max_r) / WIDTH);
-        
-        y = 0;
-        while(y < HEIGHT)
+        pi = fractal->max_i + ((double)(HEIGHT - y) * (fractal->min_i - fractal->max_i) / HEIGHT);
+        x = 0;
+        while(x < WIDTH)
             {
-                pi = fractal->max_i + ((double)(HEIGHT - y) * (fractal->min_i - fractal->max_i) / HEIGHT);
+                pr = fractal->max_r + ((double)(WIDTH - x) * (fractal->min_r - fractal->max_r) / WIDTH);
                 if (is_mandelbrot(pr, pi, fractal))
 				    my_mlx_pixel_put(fractal, x, y, RED);
 			    else
 				    my_mlx_pixel_put(fractal, x, y, BLUE);
-                y++;
+                x++;
             }
-        x++;
+        y++;
     }
     mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window, fractal->img.img_ptr, 0, 0);
 }
