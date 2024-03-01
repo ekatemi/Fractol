@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     {
         fractal.name = argv[1];
         fractal_init(&fractal); //inicia window y image
-        set_minmax(&fractal); //set min max values of fractal with minx -2
+        //set_minmax(&fractal); //set min max values of fractal with minx -2 ---moved it to fractal render
         fractal_render(&fractal); //modifica image
        
         // int color = 0x00FF0000;
