@@ -26,3 +26,10 @@ void fractal_init(t_fractal *fractal)
     fractal->img.pixel_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
     set_minmax(fractal);
 }
+
+// void clean_exit(t_fractal *data)
+// {
+//     if (data->img->img)
+//     mlx_destroy_window(data->mlx_connection, data->mlx_window);
+//     free(data->mlx_connection);
+// }

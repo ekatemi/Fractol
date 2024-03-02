@@ -16,7 +16,7 @@ HEADER  = fractol.h
 MLX_PATH = ./mlx
 LINK    = -framework OpenGL -framework AppKit -lm
 LIBS    = -Lmlx -lmlx
-SRC     = main.c string_utils.c init.c key_handlers.c render.c math_utils.c
+SRC     = main.c string_utils.c init.c key_handlers.c render.c fractal_utils.c colour.c
 COMP    = $(CC) $(CFLAGS) $(LIBS)
 RM      = rm -f
 

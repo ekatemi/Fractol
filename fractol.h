@@ -7,15 +7,19 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <math.h>
+// #include <math.h>
 
 #define ERR_MSG "Please enter \n\t\" ./fractol mandelbrot\" \n\t or \n\t\" ./fractol julia <val1> <val2>\"\n"
 
-#define WIDTH 400
+#define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITERATIONS 1000
+#define MAX_ITERATIONS 400
+
+//*** COLOURS *** //
 #define RED 0x00FF0000
 #define BLUE 0x000000FF
+#define WHITE 0xFFFFFFF
+#define BLACK 0x0000000
 
 enum {
 	ON_KEYDOWN = 2,
@@ -59,7 +63,10 @@ typedef struct s_fractal
     double max_r;
     double min_i;
     double max_i;
+    int trgb; //colour depending of iterations
     int count;
+    double julia_shift_y;
+    double julia_shift_x;
     //hooks
 }   t_fractal;
 
@@ -73,7 +80,12 @@ int handle_keypress(int keysym, t_fractal *data);
 void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
 //void color_image(t_fractal *data, int color); ///just test, delete later
 int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
-void fractal_render(t_fractal *fractal);
+void mandelbrot_render(t_fractal *fractal);
+//void    julia_render(t_fractal *fractal);
+
+//*** COLORS ***//
+int colour_pixel(t_fractal *fractal);
+int colour_clown(t_fractal *fractal);
 
 //*** string utils ***
 int	ft_strncmp(const char *s1, const char *s2, size_t n);

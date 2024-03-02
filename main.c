@@ -1,9 +1,6 @@
 #include "fractol.h"
 
 
-
-
-
 // void color_image(t_fractal *data, int color)
 // {
 //     int x;
@@ -34,16 +31,8 @@ int main(int argc, char **argv)
     {
         fractal.name = argv[1];
         fractal_init(&fractal); //inicia window y image
-        //set_minmax(&fractal); //set min max values of fractal with minx -2 ---moved it to fractal render
-        fractal_render(&fractal); //modifica image
-       
-        // int color = 0x00FF0000;
-        // color_image(&fractal, color);
-        // /* Display the image in the window */
-        // mlx_put_image_to_window(fractal.mlx_connection, fractal.mlx_window, fractal.img.img_ptr, 0, 0);
-        
+        mandelbrot_render(&fractal); //modifica image     
         mlx_key_hook(fractal.mlx_window, &handle_keypress, &fractal);
-    
         mlx_loop(fractal.mlx_connection); //infinite loop to keep modifying
        // mlx_destroy_window(fractal.mlx_connection, fractal.mlx_window);
         //free(fractal.mlx_connection);

@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "fractol.h": "c",
+        "mlx.h": "c",
+        "stdio.h": "c"
     }
 }

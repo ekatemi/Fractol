@@ -85,8 +85,7 @@ char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel,
 **  endian : 0 = sever X is little endian, 1 = big endian
 **  endian : useless on macos, client and graphical framework have the same endian
 */
-int	mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr,
-				int x, int y);
+int	mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);
 unsigned int	mlx_get_color_value(void *mlx_ptr, int color);
 
 
