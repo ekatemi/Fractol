@@ -9,7 +9,14 @@
 #include <stdlib.h>
 // #include <math.h>
 
-#define ERR_MSG "Please enter \n\t\" ./fractol mandelbrot\" \n\t or \n\t\" ./fractol julia <val1> <val2>\"\n"
+#define ERR_MSG "Please enter \n\t\" ./fractol mandelbrot\" \n\t \
+or \n\t\" ./fractol julia <val1> <val2>\"\n"
+
+#define WELCOME_MSG "\033[1;32mWelcome to \033[1;34m🌈FRACTOL!\033[1;32m🌈\n" \
+                    "\033[0;33m+ \033[0mresolution in\n" \
+                    "\033[0;33m- \033[0mresolution out\n" \
+                    "\033[0;33m← → ↑ ↓\033[0m move left/right/up/down\n" \
+                    "\033[0;33mesc\033[0m close and exit"
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -59,6 +66,12 @@ typedef struct s_fractal
     void *mlx_window; //mlx_new_window
     //IMG
     t_img img;
+    //COLOURS
+    int red;
+    int green;
+    int blue;
+   
+
     //positioning
     double center_i;
     double center_r;
@@ -97,6 +110,7 @@ void mandelbrot_render(t_fractal *fractal);
 //*** COLORS ***//
 int colour_pixel(t_fractal *fractal);
 int colour_clown(t_fractal *fractal);
+int calculate_color(t_fractal *fractal);
 
 //*** string utils ***
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -104,5 +118,6 @@ void	ft_putstr_fd(char *s, int fd);
 
 //math utils
 void set_minmax(t_fractal *fractal);
+double ft_atod(char *nptr);
 
 #endif
