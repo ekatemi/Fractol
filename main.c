@@ -33,9 +33,10 @@ int main(int argc, char **argv)
         fractal_init(&fractal); //inicia window y image
         mandelbrot_render(&fractal); //modifica image     
         mlx_key_hook(fractal.mlx_window, &handle_keypress, &fractal);
+        mlx_mouse_hook(fractal.mlx_window, &handle_mouse, &fractal);
         mlx_loop(fractal.mlx_connection); //infinite loop to keep modifying
        // mlx_destroy_window(fractal.mlx_connection, fractal.mlx_window);
-        //free(fractal.mlx_connection);
+    //free(fractal.mlx_connection);
     }
     else
     {

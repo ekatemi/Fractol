@@ -59,22 +59,31 @@ typedef struct s_fractal
     void *mlx_window; //mlx_new_window
     //IMG
     t_img img;
+    //positioning
+    double center_i;
+    double center_r;
     double min_r;
     double max_r;
     double min_i;
     double max_i;
-    int trgb; //colour depending of iterations
+    //iterations
     int count;
     double julia_shift_y;
     double julia_shift_x;
     //hooks
+    double zoom;
+    double move_y;
+    double move_x;
 }   t_fractal;
 
 //*** INIT FRACTAL STRUCT ***//
 void fractal_init(t_fractal *fractal);
+void clean_exit(t_fractal *data);
 
 //***  KEY HANDLERS  ***//
 int handle_keypress(int keysym, t_fractal *data);
+int handle_mouse(int keycode, int x, int y, t_fractal *fractal);
+void	mouse_zoom(t_fractal *f, double zoom, int x, int y);
 
 //*** RENDER FRACTAL ***
 void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);

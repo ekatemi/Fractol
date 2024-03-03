@@ -10,6 +10,7 @@ void    mandelbrot_render(t_fractal *fractal)
     double pr; //x
     double pi; //y
 
+    set_minmax(fractal);
     y = 0;
     while(y < HEIGHT)
     {
