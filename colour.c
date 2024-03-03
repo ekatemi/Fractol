@@ -22,9 +22,9 @@ int colour_pixel(t_fractal *fractal)  // maybe better to do a struct for this
 
     // return (new_colour);
     int red = 0;  // No red
-    int green = fractal->count * 64 * 255 / MAX_ITERATIONS;
+    int green = fractal->count * 64 * 255 / fractal->max_iter;
     int blue = 0;  // No blue
-
+    //printf("max iter %d", fractal->count);
     // Combine the color channels
     int new_colour = (red << 16) | (green << 8) | blue;
     return new_colour;

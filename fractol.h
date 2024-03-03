@@ -13,7 +13,7 @@
 
 #define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITERATIONS 400
+//#define MAX_ITERATIONS 250
 
 //*** COLOURS *** //
 #define RED 0x00FF0000
@@ -67,6 +67,7 @@ typedef struct s_fractal
     double min_i;
     double max_i;
     //iterations
+    int max_iter;
     int count;
     double julia_shift_y;
     double julia_shift_x;
@@ -78,9 +79,10 @@ typedef struct s_fractal
 
 //*** INIT FRACTAL STRUCT ***//
 void fractal_init(t_fractal *fractal);
-void clean_exit(t_fractal *data);
+int clean_exit(t_fractal *data);
 
 //***  KEY HANDLERS  ***//
+void event_init(t_fractal *fractal);
 int handle_keypress(int keysym, t_fractal *data);
 int handle_mouse(int keycode, int x, int y, t_fractal *fractal);
 void	mouse_zoom(t_fractal *f, double zoom, int x, int y);

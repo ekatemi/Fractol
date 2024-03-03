@@ -44,7 +44,7 @@ int	is_mandelbrot(double cr, double ci, t_fractal *fractal)
 	i = 0;
 	zr = 0;
 	zi = 0;
-	while (i <= MAX_ITERATIONS)
+	while (i <= fractal->max_iter)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 		{

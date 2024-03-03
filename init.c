@@ -28,17 +28,20 @@ void fractal_init(t_fractal *fractal)
     fractal->move_x = 0.0;
     fractal->move_y = 0.0;
     fractal->zoom = 1.0;
+    // iter
+    fractal->max_iter = 100;
 }
 
-void clean_exit(t_fractal *data)
+int clean_exit(t_fractal *data)
 {
     mlx_destroy_window(data->mlx_connection, data->mlx_window);
-    free(data->mlx_connection);
+    //free(data->mlx_connection); innecessary
     exit(EXIT_SUCCESS);
 }
 
-// void event_init(t_fractal *fractal)
-// {
-//      mlx_key_hook(fractal->mlx_window, &handle_keypress, &fractal);
-//      mlx_key_hook(fractal->mlx_window, &handle_mouse, &fractal);
-// }
+void event_init(t_fractal *fractal)
+{
+    mlx_key_hook(fractal->mlx_window, handle_keypress, fractal);
+    mlx_hook(fractal->mlx_window, ON_DESTROY, 0, clean_exit, fractal);
+    mlx_mouse_hook(fractal->mlx_window, handle_mouse, fractal);
+}
