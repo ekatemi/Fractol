@@ -16,7 +16,8 @@ int main(int argc, char **argv)
         if (!ft_strncmp(fractal.name, "julia", 5))
 		{
 			fractal.julia_x = ft_atod(argv[2]);///falta map it to u
-			fractal.julia_y = ft_atod(argv[3]);
+			fractal.julia_y = ft_atod(argv[3]); ///not working properly
+            printf("x julia %f y julia %f\n", fractal.julia_x, fractal.julia_x);
 		}
         fractal_init(&fractal); //inicia window y image
         fractal_render(&fractal);
