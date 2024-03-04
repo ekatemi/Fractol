@@ -105,7 +105,9 @@ void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
 //void color_image(t_fractal *data, int color); ///just test, delete later
 int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
 void mandelbrot_render(t_fractal *fractal);
-//void    julia_render(t_fractal *fractal);
+void    julia_render(t_fractal *fractal);
+int is_julia(double zr, double zi, t_fractal *fractal);
+void	julia_shift(int x, int y, t_fractal *fractal);
 
 //*** COLORS ***//
 int colour_pixel(t_fractal *fractal);

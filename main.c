@@ -17,7 +17,10 @@ int main(int argc, char **argv)
 			fractal.julia_shift_y = ft_atod(argv[3]);
 		}
         fractal_init(&fractal); //inicia window y image
-        mandelbrot_render(&fractal); //modifica image
+        if (!ft_strncmp(fractal.name, "mandelbrot", 10))
+            mandelbrot_render(&fractal);
+        else if (!ft_strncmp(fractal.name, "julia", 5))
+            julia_render(&fractal);
         event_init(&fractal);
         mlx_loop(fractal.mlx_connection);
     }

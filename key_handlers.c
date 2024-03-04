@@ -22,22 +22,28 @@ int handle_keypress(int keycode, t_fractal *data)
     else if (keycode == 27)
         data->max_iter -= 25;
     //printf("Keypress: %d, move_x %f, move_y %f\n", keycode, data->move_x, data->move_y);
-    mandelbrot_render(data);
+    if (!ft_strncmp(data->name, "mandelbrot", 10))
+        mandelbrot_render(data);
+    else if (!ft_strncmp(data->name, "julia", 5))
+        julia_render(data);
     return (0);
 }
 //int (*f)(int button, int x, int y, void *param)
-int handle_mouse(int mousecode, int x, int y, t_fractal *fractal) //need to do someting with x and y
+int handle_mouse(int button, int x, int y, t_fractal *fractal) //need to do someting with x and y
 {
     (void)x;
     (void)y; 
-    if (mousecode == 5)
+    if (button == 5)
     {
         fractal->zoom *= 0.9;
     }
-    else if (mousecode == 4)
+    else if (button == 4)
         fractal->zoom *= 1.1;
-    // else if (keycode == 2 && fractal->name == julia)
-    //     julia_shift(x, y, fractal);
-    mandelbrot_render(fractal);
+    else if (button == 2 && !ft_strncmp(fractal->name, "julia", 5))
+         julia_shift(x, y, fractal);
+    if (!ft_strncmp(fractal->name, "julia", 5))
+        mandelbrot_render(fractal);
+    else if (!ft_strncmp(fractal->name, "julia", 5))
+        julia_render(fractal);
     return 0;
 }
