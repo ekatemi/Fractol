@@ -20,7 +20,33 @@ fractal->max_i = +2 * fractal->zoom + fractal->move_y;
 //fractal->max_i = fractal->min_i * -1 * HEIGHT / WIDTH + fractal->move_y;
 }
 
+// double scale_to_range(int input, int min_input, int max_input, double min_output, double max_output) 
+// {
+//     return min_output + ((double)(input - min_input) / (max_input - min_input)) * (max_output - min_output);
+// }
 
+t_complex   sum_complex(t_complex z1, t_complex z2)
+{
+    t_complex   result;
+
+    result.x = z1.x + z2.x;
+    result.y = z1.y + z2.y;
+    return result;
+}
+
+
+/*
+ * real = (x^2 - y^2)
+ * i =  2*x*y
+*/
+t_complex   square_complex(t_complex z)
+{
+    t_complex   result;
+    
+    result.x = (z.x * z.x) - (z.y * z.y);
+    result.y = 2 * z.x * z.y;
+    return result;
+}
 
 
 

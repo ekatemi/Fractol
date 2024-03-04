@@ -18,8 +18,8 @@ or \n\t\" ./fractol julia <val1> <val2>\"\n"
                     "\033[0;33m← → ↑ ↓\033[0m move left/right/up/down\n" \
                     "\033[0;33mesc\033[0m close and exit"
 
-#define WIDTH 800
-#define HEIGHT 800
+#define WIDTH 600
+#define HEIGHT 600
 //#define MAX_ITERATIONS 250
 
 //*** COLOURS *** //
@@ -44,7 +44,7 @@ enum {
 typedef struct s_complex
 {
     double  x;
-    double  z;
+    double  y;
 }   t_complex;
 
 //to get the memory address on which we will mutate the bytes accordingly 
@@ -70,6 +70,7 @@ typedef struct s_fractal
     int red;
     int green;
     int blue;
+    int colorsh;
    
 
     //positioning
@@ -82,8 +83,8 @@ typedef struct s_fractal
     //iterations
     int max_iter;
     int count;
-    double julia_shift_y;
-    double julia_shift_x;
+    double julia_y;
+    double julia_x;
     //hooks
     double zoom;
     double move_y;
@@ -108,6 +109,7 @@ void mandelbrot_render(t_fractal *fractal);
 void    julia_render(t_fractal *fractal);
 int is_julia(double zr, double zi, t_fractal *fractal);
 void	julia_shift(int x, int y, t_fractal *fractal);
+void    fractal_render(t_fractal *fractal);
 
 //*** COLORS ***//
 int colour_pixel(t_fractal *fractal);
@@ -121,5 +123,7 @@ void	ft_putstr_fd(char *s, int fd);
 //math utils
 void set_minmax(t_fractal *fractal);
 double ft_atod(char *nptr);
+t_complex   sum_complex(t_complex z1, t_complex z2);
+t_complex   square_complex(t_complex z);
 
 #endif

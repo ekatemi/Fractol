@@ -8,19 +8,18 @@ int main(int argc, char **argv)
 
     if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) 
         || (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+    // if (argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 10) || !ft_strncmp(argv[1], "julia", 5)))
     {
         ft_putstr_fd(WELCOME_MSG, STDOUT_FILENO);
         fractal.name = argv[1];
+   
         if (!ft_strncmp(fractal.name, "julia", 5))
 		{
-			fractal.julia_shift_x = ft_atod(argv[2]);
-			fractal.julia_shift_y = ft_atod(argv[3]);
+			fractal.julia_x = ft_atod(argv[2]);///falta map it to u
+			fractal.julia_y = ft_atod(argv[3]);
 		}
         fractal_init(&fractal); //inicia window y image
-        if (!ft_strncmp(fractal.name, "mandelbrot", 10))
-            mandelbrot_render(&fractal);
-        else if (!ft_strncmp(fractal.name, "julia", 5))
-            julia_render(&fractal);
+        fractal_render(&fractal);
         event_init(&fractal);
         mlx_loop(fractal.mlx_connection);
     }

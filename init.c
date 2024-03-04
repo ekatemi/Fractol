@@ -27,6 +27,8 @@ void fractal_init(t_fractal *fractal)
     //for hooks
     fractal->move_x = 0.0;
     fractal->move_y = 0.0;
+    fractal->julia_x = 0.0;
+    fractal->julia_y = 0.0;
     fractal->zoom = 1.0;
     // iter
     fractal->max_iter = 100;
@@ -35,7 +37,7 @@ void fractal_init(t_fractal *fractal)
 int clean_exit(t_fractal *data)
 {
     mlx_destroy_window(data->mlx_connection, data->mlx_window);
-    //free(data->mlx_connection); innecessary
+    free(data->mlx_connection); //innecessary maybe
     exit(EXIT_SUCCESS);
 }
 
