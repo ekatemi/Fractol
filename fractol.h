@@ -106,30 +106,24 @@ void	mouse_zoom(t_fractal *f, double zoom, int x, int y);
 
 //*** RENDER FRACTAL ***
 void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
-//void color_image(t_fractal *data, int color); ///just test, delete later
+
 int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
-void mandelbrot_render(t_fractal *fractal);
 void	render_mandelbrot(t_fractal *fractal);
-void    julia_render(t_fractal *fractal);
 void	render_julia(t_fractal *f);
 int is_julia(double zr, double zi, t_fractal *fractal);
 void	julia_shift(int x, int y, t_fractal *fractal);
-void    fractal_render(t_fractal *fractal);
 void	render_fractal(t_fractal *data);
 
 //*** COLORS ***//
 int colour_pixel(t_fractal *fractal);
-int colour_clown(t_fractal *fractal);
-int calculate_color(t_fractal *fractal);
+
 
 //*** string utils ***
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);
 
-//math utils
+//coordinates utils
 void set_minmax(t_fractal *fractal);
-double ft_atod(char *nptr);
-t_complex   sum_complex(t_complex z1, t_complex z2);
-t_complex   square_complex(t_complex z);
+
 
 #endif

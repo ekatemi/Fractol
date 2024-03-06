@@ -5,9 +5,9 @@ int handle_keypress(int keycode, t_fractal *data)
     if (keycode == 53)
         clean_exit(data);
     else if (keycode == 126)
-        data->move_y -= 0.5 * data->zoom;
-    else if (keycode == 125)
         data->move_y += 0.5 * data->zoom;
+    else if (keycode == 125)
+        data->move_y -= 0.5 * data->zoom;
     else if (keycode == 123)
         data->move_x += 0.5 * data->zoom;
     else if (keycode == 124)
@@ -36,12 +36,7 @@ int handle_keypress(int keycode, t_fractal *data)
         data->blue += 5;
         data->blue %= 256;
     }
-
-    // printf("Keypress: %d\n", keycode);
-    
     render_fractal(data);
-    
-    // fractal_render(data);
     return (0);
 }
 
@@ -66,5 +61,4 @@ void	julia_shift(int x, int y, t_fractal *fractal)
 {
 	fractal->julia_x = fractal->min_r + (double)x * (fractal->max_r - fractal->min_i) / WIDTH;
 	fractal->julia_y = fractal->max_i + (double)y * (fractal->min_i - fractal->max_i) / HEIGHT;
-	//printf("New Julia Parameters: x = %d, y = %d\n", x, y);
 }
