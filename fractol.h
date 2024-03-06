@@ -28,6 +28,9 @@ or \n\t\" ./fractol julia <val1> <val2>\"\n"
 #define WHITE 0xFFFFFFF
 #define BLACK 0x0000000
 
+# define mandelbrot 1
+# define julia 2
+
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -106,10 +109,13 @@ void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
 //void color_image(t_fractal *data, int color); ///just test, delete later
 int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
 void mandelbrot_render(t_fractal *fractal);
+void	render_mandelbrot(t_fractal *fractal);
 void    julia_render(t_fractal *fractal);
+void	render_julia(t_fractal *f);
 int is_julia(double zr, double zi, t_fractal *fractal);
 void	julia_shift(int x, int y, t_fractal *fractal);
 void    fractal_render(t_fractal *fractal);
+void	render_fractal(t_fractal *data);
 
 //*** COLORS ***//
 int colour_pixel(t_fractal *fractal);

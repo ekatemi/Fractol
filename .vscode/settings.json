@@ -10,6 +10,7 @@
         "ios": "c",
         "string": "c",
         "type_traits": "c",
-        "locale": "c"
+        "locale": "c",
+        "typeinfo": "c"
     }
 }

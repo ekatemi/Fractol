@@ -1,5 +1,24 @@
 #include "fractol.h"
 
+static void data_init(t_fractal *fractal)
+{
+    //for hooks
+    if (!ft_strncmp(fractal->name, "julia", 5))
+        fractal->move_x = 0.0;
+    else
+        fractal->move_x = -0.5;
+    fractal->move_y = 0.0;
+    fractal->julia_x = -1.261;
+    fractal->julia_y = -0.025;
+    fractal->zoom = 1.0;
+    // iter
+    fractal->max_iter = 100;
+    //colour
+    fractal->red = 255;
+    fractal->green = 0;
+    fractal->blue = 0;
+}
+
 void fractal_init(t_fractal *fractal)
 {
     //connection with x server
@@ -24,14 +43,8 @@ void fractal_init(t_fractal *fractal)
     }
     //define pixel
     fractal->img.pixel_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
-    //for hooks
-    fractal->move_x = 0.0;
-    fractal->move_y = 0.0;
-    fractal->julia_x = 0.0;
-    fractal->julia_y = 0.0;
-    fractal->zoom = 1.0;
-    // iter
-    fractal->max_iter = 100;
+    data_init(fractal);
+    //event_init(fractal);
 }
 
 int clean_exit(t_fractal *data)
