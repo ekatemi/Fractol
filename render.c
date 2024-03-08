@@ -8,4 +8,6 @@ void	render_fractal(t_fractal *data)
 		render_mandelbrot(data);
 	if (!ft_strncmp(data->name, "julia", 5))
 		render_julia(data);
+	else if (!ft_strncmp(data->name, "ship", 4))
+		render_burning(data);
 }

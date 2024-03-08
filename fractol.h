@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-// #include <math.h>
+#include <math.h>
 
 #define ERR_MSG "Please enter \n\t\" ./fractol mandelbrot\" \n\t \
 or \n\t\" ./fractol julia <val1> <val2>\"\n"
@@ -115,6 +115,7 @@ void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
 //int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
 void	render_mandelbrot(t_fractal *fractal);
 void	render_julia(t_fractal *f);
+void    render_burning(t_fractal *data);
 //int is_julia(double zr, double zi, t_fractal *fractal);
 //void	julia_shift(int x, int y, t_fractal *fractal);
 void	render_fractal(t_fractal *data);
