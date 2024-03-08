@@ -10,7 +10,6 @@ int main(int argc, char **argv)
     {
         ft_putstr_fd(WELCOME_MSG, STDOUT_FILENO);
         fractal.name = argv[1];
-        printf("%s\n", argv[1]);
         fractal_init(&fractal); //inicia window y image
         event_init(&fractal);
         render_fractal(&fractal); 

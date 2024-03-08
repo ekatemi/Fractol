@@ -44,11 +44,11 @@ enum {
 
 //COMPLEX VALUES
 
-typedef struct s_complex
-{
-    double  x;
-    double  y;
-}   t_complex;
+// typedef struct s_complex
+// {
+//     double  x;
+//     double  y;
+// }   t_complex;
 
 //to get the memory address on which we will mutate the bytes accordingly 
 typedef struct s_img
@@ -60,6 +60,7 @@ typedef struct s_img
     int line_len;
 }   t_img;
 
+//typedef void (*RenderFunction)(t_fractal*);
 
 typedef struct s_fractal
 {
@@ -77,8 +78,8 @@ typedef struct s_fractal
    
 
     //positioning
-    double center_i;
-    double center_r;
+    //double center_i;
+    //double center_r;
     double min_r;
     double max_r;
     double min_i;
@@ -86,32 +87,36 @@ typedef struct s_fractal
     //iterations
     int max_iter;
     int count;
+    //changing C in julia
     double julia_y;
     double julia_x;
     //hooks
     double zoom;
+    double zoom_factor;
     double move_y;
     double move_x;
+    //render function
+    //RenderFunction render_function;
 }   t_fractal;
 
-//*** INIT FRACTAL STRUCT ***//
+//*** INIT FRACTAL STRUCT AND EVENTS***//
 void fractal_init(t_fractal *fractal);
-int clean_exit(t_fractal *data);
+void event_init(t_fractal *fractal);
 
 //***  KEY HANDLERS  ***//
-void event_init(t_fractal *fractal);
+int clean_exit(t_fractal *data);
 int handle_keypress(int keysym, t_fractal *data);
-int handle_mouse(int keycode, int x, int y, t_fractal *fractal);
-void	mouse_zoom(t_fractal *f, double zoom, int x, int y);
+int handle_mouse_zoom(int keycode, int x, int y, t_fractal *fractal);
+//void	mouse_zoom(t_fractal *f, double zoom, int x, int y);
+//int handle_julia(int keycode, int x, int y, t_fractal *fractal);
 
 //*** RENDER FRACTAL ***
 void	my_mlx_pixel_put(t_fractal *data, int x, int y, int color);
-
-int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
+//int	is_mandelbrot(double cr, double ci, t_fractal *fractal);
 void	render_mandelbrot(t_fractal *fractal);
 void	render_julia(t_fractal *f);
-int is_julia(double zr, double zi, t_fractal *fractal);
-void	julia_shift(int x, int y, t_fractal *fractal);
+//int is_julia(double zr, double zi, t_fractal *fractal);
+//void	julia_shift(int x, int y, t_fractal *fractal);
 void	render_fractal(t_fractal *data);
 
 //*** COLORS ***//
@@ -124,6 +129,7 @@ void	ft_putstr_fd(char *s, int fd);
 
 //coordinates utils
 void set_minmax(t_fractal *fractal);
+double linear_extr(int n, char c, t_fractal *fractal);
 
 
 #endif

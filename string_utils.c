@@ -1,5 +1,5 @@
 #include "fractol.h"
-// add libft!!!!!
+//0 if strings equal, 1 if not
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -19,10 +19,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (s == NULL || fd < 0)
-        return ;
-	
+        return ;	
 	while (*s)
-	{
 		write(fd, s++, 1);
-	}
 }

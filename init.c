@@ -13,10 +13,11 @@ static void data_init(t_fractal *fractal)
     fractal->zoom = 1.0;
     // iter
     fractal->max_iter = 100;
-    //colour
+    //color
     fractal->red = 255;
     fractal->green = 0;
     fractal->blue = 0;
+    fractal->zoom_factor = 1.0;
 }
 
 void fractal_init(t_fractal *fractal)
@@ -58,5 +59,5 @@ void event_init(t_fractal *fractal)
 {
     mlx_key_hook(fractal->mlx_window, handle_keypress, fractal);
     mlx_hook(fractal->mlx_window, ON_DESTROY, 0, clean_exit, fractal);
-    mlx_mouse_hook(fractal->mlx_window, handle_mouse, fractal);
+    mlx_mouse_hook(fractal->mlx_window, handle_mouse_zoom, fractal);
 }
